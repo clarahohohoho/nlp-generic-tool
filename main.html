@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <script src="./jquery-3.1.1.min.js"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+    <meta charset ="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NLP Generic Tool</title>
+  </head>
+  <body>
+    <div class="ui two column relaxed very horizontally padded grid">
+
+        <!-- Title -->
+        <div class='sixteen wide column'>
+            <div class="ui fluid container">
+                <!-- <img src='./icons/htx.png'  style="vertical-align:middle"> -->
+                <br>
+                <div class='ui huge header' style='font-size:40px'>NLP Generic Tool</div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class='column'>
+
+            <!-- Input Text -->
+            <div class="ui top attached tabular menu">
+                <a class="active item" data-tab="input" style="font-size:20px">Input Text</a>
+                <a class="item" data-tab="output" style="font-size:20px">Result</a>
+            </div>
+            <div class="ui bottom attached active tab segment" data-tab="input">
+                <!-- <div class="ui raised segment"> -->
+                    <div class="ui form">
+                        <div class="field">
+                          <textarea placeholder="Write text here" id="text" style="font-size:15px"></textarea>
+                        </div>
+                        <button class="ui button" type="submit" id='button' style="font-size:15px">Submit</button>
+                    </div>
+                <!-- </div> -->
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="output">
+                <div id = 'output-content'>
+                    <div class="ui negative message">
+                        <div class="header" style="font-size:20px">
+                          No input found!
+                        </div>
+                        <p style="font-size:20px">Please input text and click on Submit once done.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QnA Bot -->
+            <div class='ui raised segment'>
+                <div class="ui form">
+                    <h2 class="ui dividing header">Question and Answer Bot</h2>
+                    <div class="field">
+                        <input type='text' placeholder="Ask me a question!" id="qn-text" style="font-size:15px">
+                    </div>
+                    <div id="ans-content"></div>
+                    <!-- <div class="ui teal inverted segment">
+                    <p style='font-size:20px'>Here is a sample answer</p>
+                    </div> -->
+                    <button class="ui button" type="button" id='ask-button' style="font-size:15px">Ask Away!!</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Output Area -->
+        <div class='column'>
+
+            <div class="ui two column relaxed grid">
+
+                <!-- Summary -->
+                <div class='column'>
+                    <div class="ui segment" style='height:100%'>
+                        <h2 class="ui dividing header">Summary</h2>
+                        <div class="ui justified container">
+                        
+                        <div id="summary-content"></div>
+        
+                        </div>
+                    </div>                    
+                </div>
+
+                <!-- Sentiment Analysis -->
+                <div class='column'>
+                    <div class="ui segment" style='height:100%'>
+                        <h2 class="ui dividing header">Sentiment</h2>
+                        <div class='ui three column center aligned grid'>
+                            <div class = 'column'>
+                                <img class='negative' src='./icons/negative-off.svg'>
+                            </div>
+                            <div class = 'column'>
+                                <img class='neutral' src='./icons/neutral-off.svg'>
+                            </div>
+                            <div class = 'column'>
+                                <img class='positive' src='./icons/positive-off.svg'>
+                            </div>    
+                            <div class = 'row'>
+                                <div id="sen-content"></div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+
+            </div>
+
+            <!-- Entities -->
+            <div class="ui segments">
+                <div class='ui segment'>
+                    <h2 class="ui dividing header">Entities</h2>
+                </div>
+                <div class="ui teal segment">
+                    <div class="ui two column stackable grid">
+                        <div class='column'>
+                            <p style="font-size:20px; text-align:center">Person</p>
+                        </div>
+                        <div class='column'>
+        
+                            <div id="person-content"></div>
+        
+                        </div>
+                    </div>
+                </div>
+                <div class="ui brown segment">
+                    <div class="ui two column stackable grid">
+                        <div class='column'>
+                            <p style="font-size:20px; text-align:center">Organisation</p>
+                        </div>
+                        <div class='column'>
+        
+                            <div id="org-content"></div>
+        
+                        </div>
+                    </div>
+                </div>
+                <div class="ui purple segment">
+                    <div class="ui two column stackable grid">
+                        <div class='column'>
+                            <p style="font-size:20px; text-align:center">Date</p>
+                        </div>
+                        <div class='column'>
+        
+                            <div id="date-content"></div>
+                    
+                        </div>
+                    </div>
+                </div>
+                <div class="ui violet segment">
+                    <div class="ui two column stackable grid">
+                        <div class='column'>
+                            <p style="font-size:20px; text-align:center">Location</p>
+                        </div>
+                        <div class='column'>
+        
+                            <div id="loc-content"></div>
+        
+                        </div>
+                    </div>
+                </div>
+                <div class="ui red segment">
+                    <div class="ui two column stackable grid">
+                        <div class='column'>
+                            <p style="font-size:20px; text-align:center">Product</p>
+                        </div>
+                        <div class='column'>
+                      
+                            <div id="product-content"></div>
+        
+                        </div>
+                    </div>
+                </div>
+                <div class="ui yellow segment">
+                    <div class="ui two column stackable grid">
+                        <div class='column'>
+                            <p style="font-size:20px; text-align:center">Event</p>
+                        </div>
+                        <div class='column'>
+        
+                            <div id="event-content"></div>
+        
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+        </div>
+
+    </div>
+
+    <script>
+    $('.menu .item').tab();
+    </script>
+
+    <!--Output Results-->
+
+    <script type="text/javascript">
+      function receiveData(response) {
+
+            var divContent = "<p style='font-size:20px'>" + response.text + "</p>"; 
+
+            $('#button').attr('class', 'ui button')
+
+            // summary
+            html_summary = "<p style='font-size:15px'>" + response.summary + "</p>";
+            $("#summary-content").html(html_summary);
+            
+            // person
+            let html_person = "";
+            var person_color = 'teal';
+            for (let i = 0; i < response.person.length; i++) {
+                html_person += "<a class='ui " + person_color + " label' style='font-size:15px'>" + response.person[i] + "</a>";
+                var re = new RegExp(response.person[i], 'gi');
+                var divContent = divContent.replace(re, "<a class='ui " + person_color + " label' style='font-size:20px' data-tooltip='Person'>" + response.person[i] + "</a>");                
+                // html += "<br />";
+            }
+            $("#person-content").html(html_person);
+
+            // organisation
+            let html_org = "";
+            var org_color = 'brown';
+            for (let i = 0; i < response.org.length; i++) {
+                html_org += "<a class='ui " + org_color + " label' style='font-size:15px'>" + response.org[i] + "</a>";
+                var re = new RegExp(response.org[i], 'gi');
+                var divContent = divContent.replace(re, "<a class='ui " + org_color + " label' style='font-size:20px' data-tooltip='Organisation'>" + response.org[i] + "</a>"); 
+            }
+            $("#org-content").html(html_org);
+
+            // date
+            let html_date = "";
+            var date_color = 'purple';
+            for (let i = 0; i < response.date.length; i++) {
+                html_date += "<a class='ui " + date_color + " label' style='font-size:15px'>" + response.date[i] + "</a>";
+                var re = new RegExp(response.date[i], 'g');
+                var divContent = divContent.replace(re, "<a class='ui " + date_color + " label' style='font-size:20px' data-tooltip='Date'>" + response.date[i] + "</a>"); 
+            }
+            $("#date-content").html(html_date);
+
+            // location
+            let html_loc = "";
+            var loc_color = 'violet';
+            for (let i = 0; i < response.loc.length; i++) {
+                html_loc += "<a class='ui " + loc_color + " label' style='font-size:15px'>" + response.loc[i] + "</a>";
+                var re = new RegExp(response.loc[i], 'gi');
+                var divContent = divContent.replace(re, "<a class='ui " + loc_color + " label' style='font-size:20px' data-tooltip='Location'>" + response.loc[i] + "</a>"); 
+            }
+            $("#loc-content").html(html_loc);
+
+            // product
+            let html_product = "";
+            var product_color = 'red';
+            for (let i = 0; i < response.pdt.length; i++) {
+                html_product += "<a class='ui " + product_color + " label' style='font-size:15px'>" + response.pdt[i] + "</a>";
+                var re = new RegExp(response.pdt[i], 'g');
+                var divContent = divContent.replace(re, "<a class='ui " + product_color + " label' style='font-size:20px' data-tooltip='Product'>" + response.pdt[i] + "</a>"); 
+            }
+            $("#product-content").html(html_product);
+
+            // event
+            let html_event = "";
+            var event_color = 'yellow';
+            for (let i = 0; i < response.event.length; i++) {
+                html_event += "<a class='ui " + event_color + " label' style='font-size:15px'>" + response.event[i] + "</a>";
+                var re = new RegExp(response.event[i], 'g');
+                var divContent = divContent.replace(re, "<a class='ui " + event_color + " label' style='font-size:20px' data-tooltip='Event'>" + response.event[i] + "</a>"); 
+            }
+            $("#event-content").html(html_event);
+
+            // sentiment
+            let html_sen = "";
+            $('.negative').attr('src', './icons/negative-off.svg');
+            $('.neutral').attr('src', './icons/neutral-off.svg');
+            $('.positive').attr('src', './icons/positive-off.svg');
+            if (response.sen < 0) {
+                html_sen = "<p style='font-size:20px'>Negative (" + response.sen.toFixed(2) + ")</p>";
+                $('.negative').attr('src', './icons/negative.svg');
+                }
+                else if (response.sen > 0) {
+                    html_sen = "<p style='font-size:20px'>Positive (" + response.sen.toFixed(2) + ")</p>";
+                $('.positive').attr('src', './icons/positive.svg');
+                }
+                else {
+                    html_sen = "<p style='font-size:20px'>Neutral (" + response.sen.toFixed(2) + ")</p>";
+                $('.neutral').attr('src', './icons/neutral.svg');
+                }
+
+            $("#sen-content").html(html_sen);
+
+            // html_output = "<h2 class='ui header'>Output Text</h2><p style='font-size:20px'>" + response.text + "</p>";
+
+            $("#output-content").html(divContent);
+            $.tab('change tab', 'output');
+
+          
+      }
+
+      $("#button").click(function (e) {
+            console.log("Hello");
+            let text = $("#text").val();
+            $('#button').attr('class', 'ui loading button');
+
+            $.post("http://127.0.0.1:5000/run-main", {data1: text}, receiveData);
+      });
+
+      function askData(response) {
+
+            $('#ask-button').attr('class', 'ui button')
+            // qna
+            html_ans = "<div class='ui green inverted segment'><p style='font-size:15px'>" + response.ans + "</p></div><br>";
+            $("#ans-content").html(html_ans);
+
+      }
+
+      $("#ask-button").click(function (e) {
+            let text = $("#text").val();
+            let qn = $("#qn-text").val();
+            $('#ask-button').attr('class', 'ui loading button')
+
+            $.post("http://127.0.0.1:5000/qna-main", {text: text, qn:qn}, askData);
+      });
+  </script>
+  </body>
